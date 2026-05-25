@@ -1,0 +1,77 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/jobber/refs/heads/main/json-schema/jobber-job-schema.json",
+  "title": "Jobber Job",
+  "description": "A scheduled or recurring Job in Jobber linking a Client, Property, line items, and one or more Visits performed by Users.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string" },
+    "jobNumber": { "type": "integer" },
+    "title": { "type": "string" },
+    "instructions": { "type": "string" },
+    "jobStatus": {
+      "type": "string",
+      "enum": ["LATE", "TODAY", "UPCOMING", "ACTION_REQUIRED", "ON_HOLD", "UNSCHEDULED", "REQUIRES_INVOICING", "ARCHIVED"],
+      "description": "Operational status of the job."
+    },
+    "jobType": {
+      "type": "string",
+      "enum": ["ONE_OFF", "RECURRING"]
+    },
+    "startAt": { "type": "string", "format": "date-time" },
+    "endAt": { "type": "string", "format": "date-time" },
+    "completedAt": { "type": "string", "format": "date-time" },
+    "client": {
+      "type": "object",
+      "properties": { "id": { "type": "string" } }
+    },
+    "property": {
+      "type": "object",
+      "properties": { "id": { "type": "string" } }
+    },
+    "lineItems": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/LineItem" }
+    },
+    "total": { "type": "number" },
+    "visits": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/Visit" }
+    },
+    "jobFormIds": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Encoded IDs for forms attached to the job (type updated from [ID!] to [EncodedId!] on 2025-04-16)."
+    },
+    "createdAt": { "type": "string", "format": "date-time" },
+    "updatedAt": { "type": "string", "format": "date-time" }
+  },
+  "required": ["id"],
+  "definitions": {
+    "LineItem": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "quantity": { "type": "number" },
+        "unitPrice": { "type": "number" },
+        "totalPrice": { "type": "number" },
+        "taxable": { "type": "boolean" }
+      }
+    },
+    "Visit": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "startAt": { "type": "string", "format": "date-time" },
+        "endAt": { "type": "string", "format": "date-time" },
+        "assignedUsers": {
+          "type": "array",
+          "items": { "type": "object", "properties": { "id": { "type": "string" } } }
+        },
+        "completed": { "type": "boolean" }
+      }
+    }
+  }
+}

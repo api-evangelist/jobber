@@ -1,0 +1,242 @@
+aid: jobber
+url: https://raw.githubusercontent.com/api-evangelist/jobber/refs/heads/main/apis.yml
+apis:
+- aid: jobber:jobber-developer-api
+  name: Jobber Developer API
+  tags:
+  - Field Service Management
+  - GraphQL
+  - Home Service
+  - Scheduling
+  - Invoicing
+  - CRM
+  humanURL: https://developer.getjobber.com
+  baseURL: https://api.getjobber.com/api/graphql
+  properties:
+  - url: https://developer.getjobber.com/docs/
+    type: Documentation
+  - url: https://developer.getjobber.com/docs/getting_started/
+    name: Getting Started
+    type: GettingStarted
+  - url: https://developer.getjobber.com/docs/using_jobbers_api/api_rate_limits/
+    name: API Rate Limits
+    type: RateLimits
+  - url: https://developer.getjobber.com/docs/changelog/
+    name: Changelog
+    type: ChangeLog
+  - url: https://developer.getjobber.com/signup/
+    name: Developer Center Signup
+    type: SignUp
+  - url: https://developer.getjobber.com/apps
+    name: Developer Center Apps
+    type: Console
+  - url: openapi/jobber-developer-api-openapi.yml
+    type: OpenAPI
+  - url: json-schema/jobber-client-schema.json
+    type: JSONSchema
+  - url: json-schema/jobber-job-schema.json
+    type: JSONSchema
+  - url: json-schema/jobber-invoice-schema.json
+    type: JSONSchema
+  - url: json-ld/jobber-context.jsonld
+    type: JSONLD
+  - url: examples/jobber-list-jobs-example.json
+    type: Example
+  - url: examples/jobber-create-invoice-example.json
+    type: Example
+  - type: NaftikoCapability
+    url: capabilities/developer-api-graphql.yaml
+  description: |
+    Jobber's Developer API is a GraphQL API for accessing and modifying data on Jobber accounts.
+    Top-level query objects include Clients, Requests, Quotes, Jobs, Invoices, Visits, Assessments,
+    Properties, Products, Services, Expenses, TimeSheetEntries, Users, Accounts, and
+    CustomFieldConfigurations. Authentication is OAuth 2.0 with scoped access tokens issued via the
+    Jobber Developer Center; access tokens are passed in the `Authorization: bearer ...` header and
+    requests are versioned with the `X-JOBBER-GRAPHQL-VERSION` date-based header. Rate limiting
+    combines a 2,500 requests / 5 minutes DDoS guard with a leaky-bucket GraphQL query-cost budget
+    surfaced through the `extensions.cost` response envelope.
+name: Jobber
+tags:
+- Field Service Management
+- Home Service
+- Scheduling
+- Quoting
+- Invoicing
+- Dispatching
+- Mobile Workforce
+- CRM
+- SaaS
+- GraphQL
+kind: contract
+image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+access: 3rd-Party
+common:
+- url: https://getjobber.com
+  type: Portal
+- url: https://developer.getjobber.com
+  name: Jobber Developer Center
+  type: Documentation
+- url: https://developer.getjobber.com/signup/
+  name: Developer Center Signup
+  type: SignUp
+- url: https://secure.getjobber.com/login
+  name: Jobber Login
+  type: Console
+- url: https://getjobber.com/sign-up/
+  name: Jobber Trial Signup
+  type: SignUp
+- url: https://getjobber.com/pricing/
+  name: Pricing
+  type: Pricing
+- url: https://getjobber.com/about/
+  name: About Jobber
+  type: Documentation
+- url: https://getjobber.com/academy/
+  name: Jobber Academy
+  type: Academy
+- url: https://getjobber.com/podcast/
+  name: Masters of Home Service Podcast
+  type: Documentation
+- url: https://getjobber.com/free-tools/
+  name: Free Tools
+  type: Tools
+- url: https://getjobber.com/grants/
+  name: Jobber Grants
+  type: Documentation
+- url: https://getjobber.com/summit/
+  name: Jobber Summit
+  type: Documentation
+- url: https://secure.getjobber.com/app_marketplace
+  name: Jobber App Marketplace
+  type: Marketplace
+- url: https://github.com/GetJobber
+  name: GetJobber GitHub
+  type: GitHubOrganization
+- url: https://github.com/GetJobber/Jobber-AppTemplate-React
+  name: Jobber App Template (React)
+  type: GitHubRepository
+- url: https://github.com/GetJobber/Jobber-AppTemplate-RailsAPI
+  name: Jobber App Template (Rails API)
+  type: GitHubRepository
+- url: https://apps.apple.com/app/jobber-on-the-go/id577517234
+  name: Jobber iOS App
+  type: Application
+- url: https://play.google.com/store/apps/details?id=com.getjobber.jobber
+  name: Jobber Android App
+  type: Application
+- url: mailto:api-support@getjobber.com
+  name: API Support
+  type: Support
+- url: plans/jobber-plans-pricing.yml
+  type: Plans
+- url: rate-limits/jobber-rate-limits.yml
+  type: RateLimits
+- url: finops/jobber-finops.yml
+  type: FinOps
+- url: rules/jobber-rules.yml
+  type: SpectralRules
+- url: vocabulary/jobber-vocabulary.yml
+  type: Vocabulary
+- type: Features
+  data:
+  - name: GraphQL Developer API
+    description: Single endpoint at https://api.getjobber.com/api/graphql exposing every core Jobber resource for read and write.
+  - name: OAuth 2.0 Authorization
+    description: App-based OAuth 2.0 with scoped access tokens managed via the Jobber Developer Center.
+  - name: Date-based API Versioning
+    description: Requests pinned to a specific schema date via the X-JOBBER-GRAPHQL-VERSION header; breaking changes are published in the changelog.
+  - name: Leaky-Bucket Query Cost Throttling
+    description: Per-app/account point budget (default 10,000) restored at 500 points/sec; cost telemetry returned in extensions.cost.
+  - name: DDoS Request Guard
+    description: 2,500 requests per 5 minutes per app/account combination, separate from the cost budget.
+  - name: App Marketplace
+    description: Public catalog at apps.getjobber.com where third-party apps are published and installed by Jobber accounts.
+  - name: Developer Testing Accounts
+    description: 90-day developer testing signup with special accounts for app development and validation.
+  - name: GraphiQL In Console
+    description: The Developer Center's Test in GraphiQL feature automates OAuth and issues 60-minute access tokens for ad-hoc queries.
+  - name: Quotes, Jobs, Visits, Invoices and Payments
+    description: Complete service-delivery lifecycle from request through invoicing modeled in the API.
+  - name: Custom Field Configurations
+    description: Account-level custom fields can be defined and attached to clients, properties, jobs, quotes, and invoices.
+  - name: Encoded Global IDs
+    description: All Jobber GraphQL nodes use opaque Encoded IDs (EncodedId type) — required for cross-account safety.
+  - name: Mobile Apps (iOS / Android)
+    description: First-party iOS (4.8 on the App Store) and Android (4.5 on Google Play) apps for technicians in the field.
+  sources:
+  - https://developer.getjobber.com/docs/
+  - https://developer.getjobber.com/docs/getting_started/
+  - https://developer.getjobber.com/docs/using_jobbers_api/api_rate_limits/
+  - https://getjobber.com
+  updated: '2026-05-25'
+- type: UseCases
+  data:
+  - name: CRM and Client Communications Sync
+    description: Mirror Jobber clients into a marketing or CRM platform and push outreach events back into Jobber as Requests or Notes.
+  - name: Quote and Job Workflow Automation
+    description: Auto-create Jobs from accepted Quotes, schedule Visits, and post completion events to other systems.
+  - name: Accounting and FinOps Integration
+    description: Replicate Invoices, Payments, and Expenses into accounting (QuickBooks, Xero) or BI warehouses.
+  - name: Field Workforce Analytics
+    description: Aggregate Visits, TimeSheetEntries, and Users to compute utilization, productivity, and route efficiency.
+  - name: Marketing Attribution
+    description: Tie Requests and Leads back to ad and SEO sources to measure customer acquisition cost.
+  - name: Subcontractor and Crew Dispatching
+    description: Use Visit and User data to dispatch external crews from a third-party workforce management platform.
+  - name: AI Receptionist and Voice Booking
+    description: Wire inbound voice / chat AI assistants directly into Jobber Requests and scheduling mutations.
+- type: Integrations
+  data:
+  - name: QuickBooks Online
+    description: Native two-way sync of clients, invoices, and payments (Connect plan and up).
+  - name: Stripe / Jobber Payments
+    description: First-party card and ACH processing for invoices and deposits.
+  - name: Mailchimp
+    description: Sync clients into Mailchimp audiences for marketing campaigns.
+  - name: Zapier
+    description: No-code integration with 5,000+ apps via Zapier triggers and actions.
+  - name: Google Calendar
+    description: Two-way sync of Jobber jobs and visits with Google Calendar.
+  - name: NiceJob
+    description: Automated review collection from completed jobs.
+  - name: Fundbox / Jobber Capital
+    description: Working-capital financing surfaced through the Jobber dashboard.
+- type: Solutions
+  data:
+  - name: Cleaning
+    description: Residential and commercial cleaning operations.
+  - name: HVAC
+    description: Heating, ventilation, and air conditioning service.
+  - name: Plumbing
+    description: Residential and light-commercial plumbing.
+  - name: Electrical
+    description: Licensed electrical contractors.
+  - name: Landscaping and Lawn Care
+    description: Recurring lawn maintenance, landscaping installs, and tree care.
+  - name: Painting
+    description: Interior and exterior residential painting.
+  - name: Roofing
+    description: Residential roofing and gutter service.
+  - name: Construction and Handyman
+    description: General contractors, remodelers, and handyman businesses.
+  - name: Pest Control and Pool Care
+    description: Recurring chemical-treatment service businesses.
+created: '2026-05-25T00:00:00.000Z'
+modified: '2026-05-25'
+position: Consuming
+description: |
+  Jobber is field service management software for home and commercial service businesses, serving
+  100,000+ businesses across more than 50 trade verticals (cleaning, HVAC, plumbing, electrical,
+  landscaping, roofing, painting, handyman, and more). The platform covers the full service-delivery
+  lifecycle — requests, assessments, quotes, scheduling, visits, time tracking, expenses, invoicing,
+  payments, and reporting — with first-party iOS and Android apps for technicians. The Jobber
+  Developer API is a single GraphQL endpoint at https://api.getjobber.com/api/graphql secured by
+  OAuth 2.0, versioned by date via the X-JOBBER-GRAPHQL-VERSION header, and throttled by a
+  leaky-bucket query-cost budget on top of a 2,500-requests / 5-minute DDoS guard. Third-party apps
+  are published in the Jobber App Marketplace.
+maintainers:
+- FN: Kin Lane
+  email: info@apievangelist.com
+  X: apievangelist
+  url: https://apievangelist.com
+specificationVersion: '0.16'

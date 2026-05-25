@@ -1,0 +1,38 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "https://api.getjobber.com/api/graphql",
+    "headers": {
+      "Authorization": "bearer YOUR_ACCESS_TOKEN",
+      "Content-Type": "application/json",
+      "X-JOBBER-GRAPHQL-VERSION": "2025-04-16"
+    },
+    "body": {
+      "query": "mutation InvoiceCreate($input: InvoiceCreateAttributes!) { invoiceCreate(input: $input) { invoice { id invoiceNumber invoiceStatus amounts { total balance } } userErrors { message path } } }",
+      "variables": {
+        "input": {
+          "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xMjM0NTY3",
+          "issuedDate": "2026-05-25",
+          "dueDate": "2026-06-24",
+          "lineItems": [
+            { "name": "Spring lawn treatment", "quantity": 1, "unitPrice": 149.0 },
+            { "name": "Aeration", "quantity": 1, "unitPrice": 89.0 }
+          ]
+        }
+      }
+    }
+  },
+  "response": {
+    "data": {
+      "invoiceCreate": {
+        "invoice": {
+          "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvOTk5OTk5",
+          "invoiceNumber": "INV-2042",
+          "invoiceStatus": "AWAITING_PAYMENT",
+          "amounts": { "total": 238.0, "balance": 238.0 }
+        },
+        "userErrors": []
+      }
+    }
+  }
+}

@@ -1,0 +1,69 @@
+name: Jobber Vocabulary
+description: Controlled vocabulary covering the field-service-management domain exposed by the Jobber Developer GraphQL API.
+provider: Jobber
+providerId: jobber
+created: '2026-05-25'
+modified: '2026-05-25'
+sources:
+  - https://developer.getjobber.com/docs/
+  - https://getjobber.com
+operational:
+  - term: Client
+    definition: A person or business that receives services from a Jobber account holder.
+    schemaOrg: https://schema.org/Person
+  - term: Lead
+    definition: A prospective client who has not yet booked a job or accepted a quote.
+  - term: Property
+    definition: A physical service location attached to one or more clients.
+    schemaOrg: https://schema.org/Place
+  - term: Request
+    definition: An inbound work request from a client, typically captured via a Jobber request form.
+  - term: Assessment
+    definition: An on-site visit to inspect work and produce a quote.
+  - term: Quote
+    definition: A priced proposal sent to a client for approval before work begins.
+    schemaOrg: https://schema.org/Quotation
+  - term: Job
+    definition: A unit of scheduled or recurring work delivered to a client at a property.
+  - term: Visit
+    definition: A scheduled appointment within a Job, assigned to one or more team members.
+  - term: TimeSheetEntry
+    definition: A record of time a user spent against a job or visit.
+  - term: Expense
+    definition: A cost incurred against a job (materials, fuel, subcontractor).
+  - term: Product
+    definition: A reusable line-item template for goods sold.
+  - term: Service
+    definition: A reusable line-item template for labor delivered.
+  - term: Invoice
+    definition: A billable statement issued to a client.
+    schemaOrg: https://schema.org/Invoice
+  - term: Payment
+    definition: Funds received against an invoice.
+    schemaOrg: https://schema.org/PaymentService
+  - term: CustomFieldConfiguration
+    definition: Account-level definition of a custom field that can be attached to client, property, job, quote, or invoice records.
+capability:
+  - term: GraphQL Query
+    definition: A read operation that fetches data from the Jobber API.
+  - term: GraphQL Mutation
+    definition: A write operation that creates, updates, or deletes Jobber data.
+  - term: Webhook Topic
+    definition: A named event published when a Jobber resource changes (e.g. CLIENT_CREATE, JOB_UPDATE).
+  - term: Scope
+    definition: A permission grant attached to an OAuth access token, controlling which queries and mutations may run.
+  - term: Encoded ID
+    definition: An opaque base64-style global identifier used for all Jobber GraphQL nodes.
+  - term: Throttle Cost
+    definition: The number of leaky-bucket points consumed by a GraphQL request; replenished at the account's restoreRate.
+  - term: App Marketplace
+    definition: The public catalog at apps.getjobber.com where Jobber accounts install third-party integrations.
+tags:
+  - Field Service Management
+  - Home Service
+  - Scheduling
+  - Invoicing
+  - CRM
+  - Quoting
+  - Dispatching
+  - Mobile Workforce

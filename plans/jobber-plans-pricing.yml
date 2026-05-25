@@ -1,0 +1,182 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Jobber
+providerId: jobber
+created: '2026-05-25'
+modified: '2026-05-25'
+reconciled: true
+tags:
+  - Field Service Management
+  - SaaS
+  - Home Service
+description: 'Reconciled plans for Jobber field service management software. Source: getjobber.com/pricing.'
+sources:
+  - https://getjobber.com/pricing/
+plans:
+  - id: jobber-core
+    name: Core
+    type: subscription
+    description: Entry tier for a single user — quotes, invoicing, online payments, professional website, reporting.
+    entries:
+      - label: Monthly billing
+        name: monthly
+        type: recurring
+        metric: account
+        limit: 1
+        timeFrame: month
+        geo: US
+        unit: 1
+        price: '49.00'
+        userMultiplied: false
+      - label: Annual billing (prepaid)
+        name: annual
+        type: recurring
+        metric: account
+        limit: 1
+        timeFrame: month
+        geo: US
+        unit: 1
+        price: '29.00'
+        userMultiplied: false
+    elements:
+      - name: 1 user included
+      - name: Online booking, quotes, invoicing
+      - name: Online payments and credit card processing
+      - name: Professional website
+      - name: Reporting and dashboards
+  - id: jobber-connect
+    name: Connect
+    type: subscription
+    description: Mid tier adding automation, QuickBooks Online sync, time / expense tracking and team workflows.
+    entries:
+      - label: Monthly billing
+        name: monthly
+        type: recurring
+        metric: account
+        limit: 5
+        timeFrame: month
+        geo: US
+        unit: 1
+        price: '139.00'
+        userMultiplied: false
+      - label: Annual billing (prepaid)
+        name: annual
+        type: recurring
+        metric: account
+        limit: 5
+        timeFrame: month
+        geo: US
+        unit: 1
+        price: '99.00'
+        userMultiplied: false
+      - label: Additional user
+        name: additional_user
+        type: recurring
+        metric: user
+        limit: -1
+        timeFrame: month
+        geo: US
+        unit: 1
+        price: '29.00'
+        userMultiplied: true
+    elements:
+      - name: 5 users included
+      - name: Automated reminders and follow-ups
+      - name: Automatic payments
+      - name: Checklists
+      - name: QuickBooks Online sync
+      - name: Time and expense tracking
+  - id: jobber-grow
+    name: Grow
+    type: subscription
+    description: Operations-scale tier with advanced quoting, job costing, two-way SMS and custom workflow automation.
+    entries:
+      - label: Monthly billing
+        name: monthly
+        type: recurring
+        metric: account
+        limit: 10
+        timeFrame: month
+        geo: US
+        unit: 1
+        price: '199.00'
+        userMultiplied: false
+      - label: Annual billing (prepaid)
+        name: annual
+        type: recurring
+        metric: account
+        limit: 10
+        timeFrame: month
+        geo: US
+        unit: 1
+        price: '149.00'
+        userMultiplied: false
+      - label: Additional user
+        name: additional_user
+        type: recurring
+        metric: user
+        limit: -1
+        timeFrame: month
+        geo: US
+        unit: 1
+        price: '29.00'
+        userMultiplied: true
+    elements:
+      - name: 10 users included
+      - name: Advanced quote customization with optional line items
+      - name: Automatic time tracking
+      - name: Job costing
+      - name: Two-way SMS
+      - name: Custom workflow automation
+  - id: jobber-plus
+    name: Plus
+    type: subscription
+    description: Premium tier bundling Marketing Suite, AI Receptionist, Pipeline, dedicated onboarding, premium support and an API walkthrough.
+    entries:
+      - label: Monthly billing
+        name: monthly
+        type: recurring
+        metric: account
+        limit: 15
+        timeFrame: month
+        geo: US
+        unit: 1
+        price: '699.00'
+        userMultiplied: false
+      - label: Annual billing (prepaid)
+        name: annual
+        type: recurring
+        metric: account
+        limit: 15
+        timeFrame: month
+        geo: US
+        unit: 1
+        price: '529.00'
+        userMultiplied: false
+      - label: Additional user
+        name: additional_user
+        type: recurring
+        metric: user
+        limit: -1
+        timeFrame: month
+        geo: US
+        unit: 1
+        price: '29.00'
+        userMultiplied: true
+    elements:
+      - name: 15 users included
+      - name: Marketing Suite ($79 value)
+      - name: AI Receptionist ($99 value)
+      - name: Pipeline ($49 value)
+      - name: Dedicated onboarding specialist
+      - name: Premium support ($99 value)
+      - name: API walkthrough
+trials:
+  - name: Free trial
+    description: 14 days of full access to Grow plan features — no credit card required.
+    durationDays: 14
+    plan: jobber-grow
+notes:
+  - The Jobber Developer API itself is free to use; pricing in this file covers the SaaS subscription required to host the account the API operates against.
+  - Payment processing (Jobber Payments) is billed separately via per-transaction fees not enumerated here.

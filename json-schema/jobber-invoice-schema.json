@@ -1,0 +1,50 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/jobber/refs/heads/main/json-schema/jobber-invoice-schema.json",
+  "title": "Jobber Invoice",
+  "description": "An Invoice issued to a Client for a Job or set of services. Tracks net amount, taxes, balance owing, and payment status.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string" },
+    "invoiceNumber": { "type": "string" },
+    "subject": { "type": "string" },
+    "message": { "type": "string" },
+    "issuedDate": { "type": "string", "format": "date" },
+    "dueDate": { "type": "string", "format": "date" },
+    "invoiceStatus": {
+      "type": "string",
+      "enum": ["DRAFT", "AWAITING_PAYMENT", "PAID", "BAD_DEBT", "PAST_DUE"],
+      "description": "Current invoice status."
+    },
+    "amounts": {
+      "type": "object",
+      "properties": {
+        "subtotal": { "type": "number" },
+        "discountAmount": { "type": "number" },
+        "taxAmount": { "type": "number" },
+        "total": { "type": "number" },
+        "depositAmount": { "type": "number" },
+        "paymentsTotal": { "type": "number" },
+        "balance": { "type": "number" }
+      }
+    },
+    "client": { "type": "object", "properties": { "id": { "type": "string" } } },
+    "lineItems": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "description": { "type": "string" },
+          "quantity": { "type": "number" },
+          "unitPrice": { "type": "number" },
+          "totalPrice": { "type": "number" }
+        }
+      }
+    },
+    "createdAt": { "type": "string", "format": "date-time" },
+    "updatedAt": { "type": "string", "format": "date-time" }
+  },
+  "required": ["id"]
+}

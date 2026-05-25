@@ -1,0 +1,49 @@
+extends:
+  - spectral:oas
+rules:
+  jobber-info-contact-email:
+    description: Jobber API specs must include the official api-support contact email.
+    given: $.info.contact
+    severity: warn
+    then:
+      field: email
+      function: pattern
+      functionOptions:
+        match: '^api-support@getjobber\.com$'
+  jobber-server-base-url:
+    description: Production server must point to https://api.getjobber.com.
+    given: $.servers[*]
+    severity: error
+    then:
+      field: url
+      function: pattern
+      functionOptions:
+        match: '^https://api\.getjobber\.com'
+  jobber-graphql-endpoint:
+    description: There must be exactly one POST /api/graphql operation.
+    given: $.paths
+    severity: error
+    then:
+      field: /api/graphql.post
+      function: truthy
+  jobber-graphql-version-header:
+    description: GraphQL operation should declare the X-JOBBER-GRAPHQL-VERSION header parameter.
+    given: $.paths['/api/graphql'].post.parameters[?(@.name=='X-JOBBER-GRAPHQL-VERSION')]
+    severity: warn
+    then:
+      function: truthy
+  jobber-bearer-security:
+    description: Bearer security scheme is required for the GraphQL endpoint.
+    given: $.components.securitySchemes
+    severity: error
+    then:
+      field: bearerAuth
+      function: truthy
+  jobber-summaries-title-case:
+    description: Operation summaries should use Title Case.
+    given: $.paths..[get,post,put,patch,delete].summary
+    severity: warn
+    then:
+      function: pattern
+      functionOptions:
+        match: '^([A-Z][A-Za-z0-9]*)(\s[A-Z][A-Za-z0-9]*)*$'

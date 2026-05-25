@@ -1,0 +1,58 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Jobber
+providerId: jobber
+created: '2026-05-25'
+modified: '2026-05-25'
+reconciled: true
+tags:
+  - Rate Limiting
+  - GraphQL Cost
+  - Leaky Bucket
+description: |
+  Reconciled rate limits for the Jobber Developer GraphQL API. Two layered controls are applied
+  per app/account combination: a fixed DDoS guard and a leaky-bucket query-cost budget. Cost
+  details are returned in the GraphQL `extensions.cost` block on every response.
+sources:
+  - https://developer.getjobber.com/docs/using_jobbers_api/api_rate_limits/
+algorithm: leaky-bucket
+responseCodes:
+  throttled: 429
+  ddos: 429
+limits:
+  - name: ddos-guard
+    description: Fixed request-rate ceiling enforced per app/account combination.
+    scope: app+account
+    window: 300s
+    requests: 2500
+    onExceed: HTTP 429 Too Many Requests
+  - name: graphql-cost-budget
+    description: Leaky-bucket query-cost budget per app/account combination.
+    scope: app+account
+    maximumAvailable: 10000
+    restoreRate: 500
+    restoreUnit: points-per-second
+    onExceed: GraphQL error with extensions.code = THROTTLED
+costing:
+  defaultFieldCost: 1
+  zeroCostFields:
+    - edges
+    - nodes
+    - node
+  connectionMultiplier: first|last argument
+  unspecifiedConnectionDefault: 100
+extensions:
+  responseEnvelope: extensions.cost
+  fields:
+    - requestedQueryCost
+    - actualQueryCost
+    - throttleStatus.maximumAvailable
+    - throttleStatus.currentlyAvailable
+    - throttleStatus.restoreRate
+bestPractices:
+  - Always supply `first` or `last` on connection fields to bound query cost.
+  - Use cursor pagination (`pageInfo.endCursor`) when collecting large datasets.
+  - Inspect `extensions.cost.throttleStatus.currentlyAvailable` and pause when low.
+  - Avoid deeply nested queries; split into separate operations when possible.
+  - Treat `THROTTLED` error code as a signal to sleep until restoreRate replenishes the budget.

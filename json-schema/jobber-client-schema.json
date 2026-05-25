@@ -1,0 +1,104 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/jobber/refs/heads/main/json-schema/jobber-client-schema.json",
+  "title": "Jobber Client",
+  "description": "A Client record in Jobber. Represents a person or business the user provides home or commercial services to. Schema derived from public GraphQL field documentation.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Globally unique encoded ID for the Client."
+    },
+    "firstName": {
+      "type": "string",
+      "description": "Primary contact's first name."
+    },
+    "lastName": {
+      "type": "string",
+      "description": "Primary contact's last name."
+    },
+    "companyName": {
+      "type": "string",
+      "description": "Company name when the client is a business."
+    },
+    "title": {
+      "type": "string",
+      "description": "Salutation or title for the primary contact."
+    },
+    "emails": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "address": { "type": "string", "format": "email" },
+          "description": { "type": "string" },
+          "primary": { "type": "boolean" }
+        }
+      }
+    },
+    "phones": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "number": { "type": "string" },
+          "description": { "type": "string" },
+          "primary": { "type": "boolean" },
+          "smsAllowed": { "type": "boolean" }
+        }
+      }
+    },
+    "billingAddress": {
+      "$ref": "#/definitions/Address"
+    },
+    "properties": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/PropertyRef" },
+      "description": "Service properties associated with the client."
+    },
+    "balance": {
+      "type": "number",
+      "description": "Outstanding balance owed by the client in account currency."
+    },
+    "isLead": {
+      "type": "boolean",
+      "description": "True when the client is still a sales lead."
+    },
+    "isArchived": {
+      "type": "boolean"
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": ["id"],
+  "definitions": {
+    "Address": {
+      "type": "object",
+      "properties": {
+        "street1": { "type": "string" },
+        "street2": { "type": "string" },
+        "city": { "type": "string" },
+        "province": { "type": "string" },
+        "postalCode": { "type": "string" },
+        "country": { "type": "string" }
+      }
+    },
+    "PropertyRef": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "address": { "$ref": "#/definitions/Address" }
+      }
+    }
+  }
+}
