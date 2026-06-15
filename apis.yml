@@ -44,8 +44,8 @@ apis:
     type: Example
   - url: examples/jobber-create-invoice-example.json
     type: Example
-  - type: NaftikoCapability
-    url: capabilities/developer-api-graphql.yaml
+  - url: graphql/jobber-graphql.md
+    type: GraphQL
   description: |
     Jobber's Developer API is a GraphQL API for accessing and modifying data on Jobber accounts.
     Top-level query objects include Clients, Requests, Quotes, Jobs, Invoices, Visits, Assessments,
@@ -140,13 +140,19 @@ common:
 - type: Features
   data:
   - name: GraphQL Developer API
-    description: Single endpoint at https://api.getjobber.com/api/graphql exposing every core Jobber resource for read and write.
+    description: >-
+      Single endpoint at https://api.getjobber.com/api/graphql exposing every core Jobber resource for read and
+      write.
   - name: OAuth 2.0 Authorization
     description: App-based OAuth 2.0 with scoped access tokens managed via the Jobber Developer Center.
   - name: Date-based API Versioning
-    description: Requests pinned to a specific schema date via the X-JOBBER-GRAPHQL-VERSION header; breaking changes are published in the changelog.
+    description: >-
+      Requests pinned to a specific schema date via the X-JOBBER-GRAPHQL-VERSION header; breaking changes are
+      published in the changelog.
   - name: Leaky-Bucket Query Cost Throttling
-    description: Per-app/account point budget (default 10,000) restored at 500 points/sec; cost telemetry returned in extensions.cost.
+    description: >-
+      Per-app/account point budget (default 10,000) restored at 500 points/sec; cost telemetry returned in
+      extensions.cost.
   - name: DDoS Request Guard
     description: 2,500 requests per 5 minutes per app/account combination, separate from the cost budget.
   - name: App Marketplace
@@ -154,7 +160,9 @@ common:
   - name: Developer Testing Accounts
     description: 90-day developer testing signup with special accounts for app development and validation.
   - name: GraphiQL In Console
-    description: The Developer Center's Test in GraphiQL feature automates OAuth and issues 60-minute access tokens for ad-hoc queries.
+    description: >-
+      The Developer Center's Test in GraphiQL feature automates OAuth and issues 60-minute access tokens for ad-hoc
+      queries.
   - name: Quotes, Jobs, Visits, Invoices and Payments
     description: Complete service-delivery lifecycle from request through invoicing modeled in the API.
   - name: Custom Field Configurations
@@ -172,7 +180,9 @@ common:
 - type: UseCases
   data:
   - name: CRM and Client Communications Sync
-    description: Mirror Jobber clients into a marketing or CRM platform and push outreach events back into Jobber as Requests or Notes.
+    description: >-
+      Mirror Jobber clients into a marketing or CRM platform and push outreach events back into Jobber as Requests
+      or Notes.
   - name: Quote and Job Workflow Automation
     description: Auto-create Jobs from accepted Quotes, schedule Visits, and post completion events to other systems.
   - name: Accounting and FinOps Integration
