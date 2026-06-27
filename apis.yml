@@ -26,7 +26,7 @@ apis:
     type: ChangeLog
   - url: https://developer.getjobber.com/signup/
     name: Developer Center Signup
-    type: SignUp
+    type: Signup
   - url: https://developer.getjobber.com/apps
     name: Developer Center Apps
     type: Console
@@ -41,9 +41,9 @@ apis:
   - url: json-ld/jobber-context.jsonld
     type: JSONLD
   - url: examples/jobber-list-jobs-example.json
-    type: Example
+    type: Examples
   - url: examples/jobber-create-invoice-example.json
-    type: Example
+    type: Examples
   - url: graphql/jobber-graphql.md
     type: GraphQL
   description: |
@@ -78,13 +78,13 @@ common:
   type: Documentation
 - url: https://developer.getjobber.com/signup/
   name: Developer Center Signup
-  type: SignUp
+  type: Signup
 - url: https://secure.getjobber.com/login
   name: Jobber Login
   type: Console
 - url: https://getjobber.com/sign-up/
   name: Jobber Trial Signup
-  type: SignUp
+  type: Signup
 - url: https://getjobber.com/pricing/
   name: Pricing
   type: Pricing
