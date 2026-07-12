@@ -71,6 +71,12 @@ kind: contract
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 access: 3rd-Party
 common:
+- type: VulnerabilityDisclosure
+  url: security/jobber-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/jobber-domain-security.yml
+- type: Authentication
+  url: authentication/jobber-authentication.yml
 - url: https://getjobber.com
   type: Portal
 - url: https://developer.getjobber.com

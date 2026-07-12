@@ -1,0 +1,13 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/jobber-developer-api-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  bearerFormat: OAuth 2.0 Access Token
+  sources:
+  - openapi/jobber-developer-api-openapi.yml
