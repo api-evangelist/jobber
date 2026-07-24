@@ -1,13 +1,18 @@
 openapi: 3.0.3
 info:
-  title: Jobber Developer API
+  title: Jobber Developer GraphQL API
   version: '2025-04-16'
-  description: |
-    The Jobber Developer API is a GraphQL API for accessing and modifying data on Jobber accounts.
+  description: 'The Jobber Developer API is a GraphQL API for accessing and modifying data on Jobber accounts.
+
     A single HTTPS endpoint accepts POST requests containing GraphQL `query`, `variables`, and
+
     `operationName` fields. Authentication is OAuth 2.0 bearer access tokens. API versioning is
+
     date-based and selected via the `X-JOBBER-GRAPHQL-VERSION` header. Rate limiting uses a
+
     leaky-bucket query-cost system in addition to a 2,500 requests per 5 minutes DDoS guard.
+
+    '
   contact:
     name: Jobber API Support
     email: api-support@getjobber.com
@@ -16,32 +21,40 @@ info:
     name: Jobber Developer Terms of Service
     url: https://developer.getjobber.com
 servers:
-  - url: https://api.getjobber.com
-    description: Jobber production GraphQL endpoint
+- url: https://api.getjobber.com
+  description: Jobber production GraphQL endpoint
+tags:
+- name: GraphQL
 paths:
   /api/graphql:
     post:
       operationId: executeGraphQLQuery
       summary: Execute A GraphQL Query Or Mutation
-      description: |
-        Single GraphQL endpoint for executing queries and mutations against the Jobber Developer API.
+      description: 'Single GraphQL endpoint for executing queries and mutations against the Jobber Developer API.
+
         Top-level query objects include Clients, Requests, Quotes, Jobs, Invoices, Visits,
+
         Assessments, Properties, Products, Services, Expenses, TimeSheetEntries, Users, Accounts,
+
         and CustomFieldConfigurations. Mutations support create / edit / delete operations on most
+
         resources, plus archive, activate, and event-style transitions (e.g. invoice approval,
+
         payment recording).
+
+        '
       tags:
-        - GraphQL
+      - GraphQL
       parameters:
-        - name: X-JOBBER-GRAPHQL-VERSION
-          in: header
-          description: Date-based API version to pin the request to (e.g. `2025-04-16`).
-          required: false
-          schema:
-            type: string
-            example: '2025-04-16'
+      - name: X-JOBBER-GRAPHQL-VERSION
+        in: header
+        description: Date-based API version to pin the request to (e.g. `2025-04-16`).
+        required: false
+        schema:
+          type: string
+          example: '2025-04-16'
       security:
-        - bearerAuth: []
+      - bearerAuth: []
       requestBody:
         required: true
         content:
@@ -52,26 +65,11 @@ paths:
               listJobs:
                 summary: List Jobs
                 value:
-                  query: |
-                    query SampleQuery {
-                      jobs {
-                        nodes {
-                          id
-                          jobNumber
-                          title
-                        }
-                      }
-                    }
+                  query: "query SampleQuery {\n  jobs {\n    nodes {\n      id\n      jobNumber\n      title\n    }\n  }\n}\n"
               listClients:
                 summary: List Clients With Pagination
                 value:
-                  query: |
-                    query Clients($first: Int!, $after: String) {
-                      clients(first: $first, after: $after) {
-                        nodes { id firstName lastName companyName emails { address } }
-                        pageInfo { hasNextPage endCursor }
-                      }
-                    }
+                  query: "query Clients($first: Int!, $after: String) {\n  clients(first: $first, after: $after) {\n    nodes { id firstName lastName companyName emails { address } }\n    pageInfo { hasNextPage endCursor }\n  }\n}\n"
                   variables:
                     first: 25
       responses:
@@ -86,27 +84,7 @@ paths:
         '429':
           description: Too Many Requests — DDoS limit (2500 / 5 min) or GraphQL cost throttling.
 components:
-  securitySchemes:
-    bearerAuth:
-      type: http
-      scheme: bearer
-      bearerFormat: OAuth 2.0 Access Token
   schemas:
-    GraphQLRequest:
-      type: object
-      required:
-        - query
-      properties:
-        query:
-          type: string
-          description: GraphQL document containing one or more operations.
-        variables:
-          type: object
-          additionalProperties: true
-          description: Variables referenced by the GraphQL document.
-        operationName:
-          type: string
-          description: Name of the operation to execute when the document contains multiple.
     GraphQLResponse:
       type: object
       properties:
@@ -138,6 +116,21 @@ components:
             code:
               type: string
               description: Error code (e.g. `THROTTLED`, `UNAUTHENTICATED`).
+    GraphQLRequest:
+      type: object
+      required:
+      - query
+      properties:
+        query:
+          type: string
+          description: GraphQL document containing one or more operations.
+        variables:
+          type: object
+          additionalProperties: true
+          description: Variables referenced by the GraphQL document.
+        operationName:
+          type: string
+          description: Name of the operation to execute when the document contains multiple.
     CostExtension:
       type: object
       description: Query cost telemetry returned in `extensions.cost`.
@@ -158,3 +151,8 @@ components:
             restoreRate:
               type: integer
               description: Points restored per second.
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: OAuth 2.0 Access Token
