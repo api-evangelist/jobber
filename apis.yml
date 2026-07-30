@@ -1,60 +1,42 @@
 aid: jobber
 url: https://raw.githubusercontent.com/api-evangelist/jobber/refs/heads/main/apis.yml
 apis:
-- aid: jobber:jobber-developer-api
-  name: Jobber Developer API
-  tags:
-  - Field Service Management
-  - GraphQL
-  - Home Service
-  - Scheduling
-  - Invoicing
-  - CRM
+- aid: jobber:jobber-graphql-api
+  name: Jobber GraphQL API
+  description: The GraphQL API from Jobber — 1 operation(s) for graphql.
   humanURL: https://developer.getjobber.com
   baseURL: https://api.getjobber.com/api/graphql
+  tags:
+  - GraphQL
   properties:
-  - url: https://developer.getjobber.com/docs/
-    type: Documentation
-  - url: https://developer.getjobber.com/docs/getting_started/
-    name: Getting Started
-    type: GettingStarted
-  - url: https://developer.getjobber.com/docs/using_jobbers_api/api_rate_limits/
-    name: API Rate Limits
-    type: RateLimits
-  - url: https://developer.getjobber.com/docs/changelog/
-    name: Changelog
-    type: ChangeLog
-  - url: https://developer.getjobber.com/signup/
-    name: Developer Center Signup
-    type: Signup
-  - url: https://developer.getjobber.com/apps
-    name: Developer Center Apps
-    type: Console
-  - url: openapi/jobber-developer-api-openapi.yml
-    type: OpenAPI
-  - url: json-schema/jobber-client-schema.json
-    type: JSONSchema
-  - url: json-schema/jobber-job-schema.json
-    type: JSONSchema
-  - url: json-schema/jobber-invoice-schema.json
-    type: JSONSchema
-  - url: json-ld/jobber-context.jsonld
-    type: JSONLD
-  - url: examples/jobber-list-jobs-example.json
-    type: Examples
-  - url: examples/jobber-create-invoice-example.json
-    type: Examples
-  - url: graphql/jobber-graphql.md
-    type: GraphQL
-  description: |
-    Jobber's Developer API is a GraphQL API for accessing and modifying data on Jobber accounts.
-    Top-level query objects include Clients, Requests, Quotes, Jobs, Invoices, Visits, Assessments,
-    Properties, Products, Services, Expenses, TimeSheetEntries, Users, Accounts, and
-    CustomFieldConfigurations. Authentication is OAuth 2.0 with scoped access tokens issued via the
-    Jobber Developer Center; access tokens are passed in the `Authorization: bearer ...` header and
-    requests are versioned with the `X-JOBBER-GRAPHQL-VERSION` date-based header. Rate limiting
-    combines a 2,500 requests / 5 minutes DDoS guard with a leaky-bucket GraphQL query-cost budget
-    surfaced through the `extensions.cost` response envelope.
+  - type: OpenAPI
+    url: openapi/jobber-graphql-api-openapi.yml
+  - type: Documentation
+    url: https://developer.getjobber.com/docs/
+  - type: GettingStarted
+    url: https://developer.getjobber.com/docs/getting_started/
+  - type: RateLimits
+    url: https://developer.getjobber.com/docs/using_jobbers_api/api_rate_limits/
+  - type: ChangeLog
+    url: https://developer.getjobber.com/docs/changelog/
+  - type: Signup
+    url: https://developer.getjobber.com/signup/
+  - type: Console
+    url: https://developer.getjobber.com/apps
+  - type: JSONSchema
+    url: json-schema/jobber-client-schema.json
+  - type: JSONSchema
+    url: json-schema/jobber-job-schema.json
+  - type: JSONSchema
+    url: json-schema/jobber-invoice-schema.json
+  - type: JSONLD
+    url: json-ld/jobber-context.jsonld
+  - type: Examples
+    url: examples/jobber-list-jobs-example.json
+  - type: Examples
+    url: examples/jobber-create-invoice-example.json
+  - type: GraphQL
+    url: graphql/jobber-graphql.md
 name: Jobber
 tags:
 - Field Service Management
@@ -68,7 +50,20 @@ tags:
 - SaaS
 - GraphQL
 kind: contract
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: paid
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Paid · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/jobber.png
 access: 3rd-Party
 common:
 - type: AgenticAccess
