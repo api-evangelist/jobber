@@ -1,0 +1,261 @@
+{
+  "item": [
+    {
+      "id": "03320417-ead0-4155-9c3d-5034d112dada",
+      "name": "GraphQL",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ed03d339-b567-4af0-b640-e72f8a9ab1f5",
+          "name": "Execute A GraphQL Query Or Mutation",
+          "request": {
+            "name": "Execute A GraphQL Query Or Mutation",
+            "description": {
+              "content": "Single GraphQL endpoint for executing queries and mutations against the Jobber Developer API.\nTop-level query objects include Clients, Requests, Quotes, Jobs, Invoices, Visits,\nAssessments, Properties, Products, Services, Expenses, TimeSheetEntries, Users, Accounts,\nand CustomFieldConfigurations. Mutations support create / edit / delete operations on most\nresources, plus archive, activate, and event-style transitions (e.g. invoice approval,\npayment recording).\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "graphql"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Date-based API version to pin the request to (e.g. `2025-04-16`).",
+                "key": "X-JOBBER-GRAPHQL-VERSION",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"<string>\",\n  \"variables\": {\n    \"key_0\": 1774.8436706831583\n  },\n  \"operationName\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "250e2415-ac50-4558-a33e-4a5d10b2e6bf",
+              "name": "GraphQL response. `data` contains the result; `errors` contains any errors. `extensions.cost` includes throttling cost metadata.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "graphql"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Date-based API version to pin the request to (e.g. `2025-04-16`).",
+                    "key": "X-JOBBER-GRAPHQL-VERSION",
+                    "value": "2025-04-16"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"query SampleQuery {\\n  jobs {\\n    nodes {\\n      id\\n      jobNumber\\n      title\\n    }\\n  }\\n}\\n\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\",\n    \"key_2\": 7651.115869741167\n  },\n  \"errors\": [\n    {\n      \"message\": \"string\",\n      \"path\": [\n        \"string\",\n        \"string\"\n      ],\n      \"extensions\": {\n        \"code\": \"string\"\n      }\n    },\n    {\n      \"message\": \"string\",\n      \"path\": [\n        \"string\",\n        \"string\"\n      ],\n      \"extensions\": {\n        \"code\": \"string\"\n      }\n    }\n  ],\n  \"extensions\": {\n    \"cost\": {\n      \"requestedQueryCost\": 9573,\n      \"actualQueryCost\": 1918,\n      \"throttleStatus\": {\n        \"maximumAvailable\": 6633,\n        \"currentlyAvailable\": 6624,\n        \"restoreRate\": 1985\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "afab10b4-8281-4b64-83e8-f0d024ed70a2",
+              "name": "Unauthorized — invalid or missing access token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "graphql"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Date-based API version to pin the request to (e.g. `2025-04-16`).",
+                    "key": "X-JOBBER-GRAPHQL-VERSION",
+                    "value": "2025-04-16"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"query SampleQuery {\\n  jobs {\\n    nodes {\\n      id\\n      jobNumber\\n      title\\n    }\\n  }\\n}\\n\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d03504e6-af72-4ff3-ae20-63860db2c903",
+              "name": "Too Many Requests — DDoS limit (2500 / 5 min) or GraphQL cost throttling.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "graphql"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Date-based API version to pin the request to (e.g. `2025-04-16`).",
+                    "key": "X-JOBBER-GRAPHQL-VERSION",
+                    "value": "2025-04-16"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"query SampleQuery {\\n  jobs {\\n    nodes {\\n      id\\n      jobNumber\\n      title\\n    }\\n  }\\n}\\n\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.getjobber.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "3a6cc738-2acb-4009-b3c1-8f5a17063de1",
+    "name": "Jobber Developer GraphQL API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Jobber Developer API is a GraphQL API for accessing and modifying data on Jobber accounts.\nA single HTTPS endpoint accepts POST requests containing GraphQL `query`, `variables`, and\n`operationName` fields. Authentication is OAuth 2.0 bearer access tokens. API versioning is\ndate-based and selected via the `X-JOBBER-GRAPHQL-VERSION` header. Rate limiting uses a\nleaky-bucket query-cost system in addition to a 2,500 requests per 5 minutes DDoS guard.\n\n\nContact Support:\n Name: Jobber API Support\n Email: api-support@getjobber.com",
+      "type": "text/plain"
+    }
+  }
+}

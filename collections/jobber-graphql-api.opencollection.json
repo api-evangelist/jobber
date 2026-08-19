@@ -1,0 +1,43 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Jobber Developer GraphQL API",
+    "version": "2025-04-16"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "GraphQL",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Execute A GraphQL Query Or Mutation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.getjobber.com/api/graphql",
+            "headers": [
+              {
+                "name": "X-JOBBER-GRAPHQL-VERSION",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Single GraphQL endpoint for executing queries and mutations against the Jobber Developer API.\nTop-level query objects include Clients, Requests, Quotes, Jobs, Invoices, Visits,\nAssessments, Properties, Products, Services, Expenses, TimeSheetEntries, Users, Accounts,\nand CustomFieldConfigurations. Mutations support create / edit / delete operations on most\nresources, plus archive, activate, and event-style transitions (e.g. invoice approval,\npayment recording).\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
