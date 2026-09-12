@@ -90,6 +90,8 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/jobber.png
 access: 3rd-Party
 common:
+- type: Website
+  url: https://www.getjobber.com/
 - type: AgenticAccess
   url: agentic-access/jobber-agentic-access.yml
 - type: VulnerabilityDisclosure
