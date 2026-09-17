@@ -1,16 +1,16 @@
 aid: jobber
 url: https://raw.githubusercontent.com/api-evangelist/jobber/refs/heads/main/apis.yml
 apis:
-- aid: jobber:jobber-graphql-api
-  name: Jobber GraphQL API
-  description: The GraphQL API from Jobber — 1 operation(s) for graphql.
+- aid: jobber:jobber-graph-ql-api
+  name: Jobber Graph QL API
+  description: The Graph QL API from Jobber — 1 operation(s) for graph ql.
   humanURL: https://developer.getjobber.com
   baseURL: https://api.getjobber.com/api/graphql
   tags:
-  - GraphQL
+  - Graph QL
   properties:
   - type: OpenAPI
-    url: openapi/jobber-graphql-api-openapi.yml
+    url: openapi/jobber-graph-ql-api-openapi.yml
   - type: Documentation
     url: https://developer.getjobber.com/docs/
   - type: GettingStarted
