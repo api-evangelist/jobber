@@ -7,6 +7,8 @@ apis:
   humanURL: https://developer.getjobber.com
   baseURL: https://api.getjobber.com/api/graphql
   tags:
+  - GraphQL
+  tags_raw:
   - Graph QL
   properties:
   - type: OpenAPI
