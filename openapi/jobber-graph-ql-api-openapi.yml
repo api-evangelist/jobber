@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Jobber Developer GraphQL API
+  title: Jobber Developer Graph QL API
   version: '2025-04-16'
   description: 'The Jobber Developer API is a GraphQL API for accessing and modifying data on Jobber accounts.
 
@@ -10,9 +10,7 @@ info:
 
     date-based and selected via the `X-JOBBER-GRAPHQL-VERSION` header. Rate limiting uses a
 
-    leaky-bucket query-cost system in addition to a 2,500 requests per 5 minutes DDoS guard.
-
-    '
+    leaky-bucket query-cost system in addition to a 2,500 requests per 5 minutes DDoS guard.'
   contact:
     name: Jobber API Support
     email: api-support@getjobber.com
@@ -24,7 +22,7 @@ servers:
 - url: https://api.getjobber.com
   description: Jobber production GraphQL endpoint
 tags:
-- name: GraphQL
+- name: Graph QL
 paths:
   /api/graphql:
     post:
@@ -40,11 +38,9 @@ paths:
 
         resources, plus archive, activate, and event-style transitions (e.g. invoice approval,
 
-        payment recording).
-
-        '
+        payment recording).'
       tags:
-      - GraphQL
+      - Graph QL
       parameters:
       - name: X-JOBBER-GRAPHQL-VERSION
         in: header
@@ -85,22 +81,6 @@ paths:
           description: Too Many Requests — DDoS limit (2500 / 5 min) or GraphQL cost throttling.
 components:
   schemas:
-    GraphQLResponse:
-      type: object
-      properties:
-        data:
-          type: object
-          additionalProperties: true
-          nullable: true
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/GraphQLError'
-        extensions:
-          type: object
-          properties:
-            cost:
-              $ref: '#/components/schemas/CostExtension'
     GraphQLError:
       type: object
       properties:
@@ -116,21 +96,6 @@ components:
             code:
               type: string
               description: Error code (e.g. `THROTTLED`, `UNAUTHENTICATED`).
-    GraphQLRequest:
-      type: object
-      required:
-      - query
-      properties:
-        query:
-          type: string
-          description: GraphQL document containing one or more operations.
-        variables:
-          type: object
-          additionalProperties: true
-          description: Variables referenced by the GraphQL document.
-        operationName:
-          type: string
-          description: Name of the operation to execute when the document contains multiple.
     CostExtension:
       type: object
       description: Query cost telemetry returned in `extensions.cost`.
@@ -151,6 +116,38 @@ components:
             restoreRate:
               type: integer
               description: Points restored per second.
+    GraphQLResponse:
+      type: object
+      properties:
+        data:
+          type:
+          - object
+          - 'null'
+          additionalProperties: true
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/GraphQLError'
+        extensions:
+          type: object
+          properties:
+            cost:
+              $ref: '#/components/schemas/CostExtension'
+    GraphQLRequest:
+      type: object
+      required:
+      - query
+      properties:
+        query:
+          type: string
+          description: GraphQL document containing one or more operations.
+        variables:
+          type: object
+          additionalProperties: true
+          description: Variables referenced by the GraphQL document.
+        operationName:
+          type: string
+          description: Name of the operation to execute when the document contains multiple.
   securitySchemes:
     bearerAuth:
       type: http
