@@ -81,21 +81,6 @@ paths:
           description: Too Many Requests — DDoS limit (2500 / 5 min) or GraphQL cost throttling.
 components:
   schemas:
-    GraphQLError:
-      type: object
-      properties:
-        message:
-          type: string
-        path:
-          type: array
-          items:
-            type: string
-        extensions:
-          type: object
-          properties:
-            code:
-              type: string
-              description: Error code (e.g. `THROTTLED`, `UNAUTHENTICATED`).
     GraphQLRequest:
       type: object
       required:
@@ -148,6 +133,21 @@ components:
             restoreRate:
               type: integer
               description: Points restored per second.
+    GraphQLError:
+      type: object
+      properties:
+        message:
+          type: string
+        path:
+          type: array
+          items:
+            type: string
+        extensions:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Error code (e.g. `THROTTLED`, `UNAUTHENTICATED`).
   securitySchemes:
     bearerAuth:
       type: http
