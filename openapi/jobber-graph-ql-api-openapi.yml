@@ -81,21 +81,21 @@ paths:
           description: Too Many Requests — DDoS limit (2500 / 5 min) or GraphQL cost throttling.
 components:
   schemas:
-    GraphQLRequest:
+    GraphQLError:
       type: object
-      required:
-      - query
       properties:
-        query:
+        message:
           type: string
-          description: GraphQL document containing one or more operations.
-        variables:
+        path:
+          type: array
+          items:
+            type: string
+        extensions:
           type: object
-          additionalProperties: true
-          description: Variables referenced by the GraphQL document.
-        operationName:
-          type: string
-          description: Name of the operation to execute when the document contains multiple.
+          properties:
+            code:
+              type: string
+              description: Error code (e.g. `THROTTLED`, `UNAUTHENTICATED`).
     GraphQLResponse:
       type: object
       properties:
@@ -113,6 +113,21 @@ components:
           properties:
             cost:
               $ref: '#/components/schemas/CostExtension'
+    GraphQLRequest:
+      type: object
+      required:
+      - query
+      properties:
+        query:
+          type: string
+          description: GraphQL document containing one or more operations.
+        variables:
+          type: object
+          additionalProperties: true
+          description: Variables referenced by the GraphQL document.
+        operationName:
+          type: string
+          description: Name of the operation to execute when the document contains multiple.
     CostExtension:
       type: object
       description: Query cost telemetry returned in `extensions.cost`.
@@ -133,21 +148,6 @@ components:
             restoreRate:
               type: integer
               description: Points restored per second.
-    GraphQLError:
-      type: object
-      properties:
-        message:
-          type: string
-        path:
-          type: array
-          items:
-            type: string
-        extensions:
-          type: object
-          properties:
-            code:
-              type: string
-              description: Error code (e.g. `THROTTLED`, `UNAUTHENTICATED`).
   securitySchemes:
     bearerAuth:
       type: http
