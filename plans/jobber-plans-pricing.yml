@@ -1,3 +1,8 @@
+# Provenance stamped 2026-10-07 (roadmap#943): written by an API Evangelist sweep (dated 2026-05-25 by the file itself), not
+# harvested from the provider. `method: generated` so the economics campaign may replace it with a
+# dated, verbatim transcription; every figure below is unverified until it does.
+method: generated
+generated: '2026-05-25'
 specification: API Commons Plans
 specificationVersion: '0.1'
 schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
@@ -180,3 +185,47 @@ trials:
 notes:
   - The Jobber Developer API itself is free to use; pricing in this file covers the SaaS subscription required to host the account the API operates against.
   - Payment processing (Jobber Payments) is billed separately via per-transaction fees not enumerated here.
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - subscription
+  units:
+  - object
+  - seat
+  plans:
+  - name: Core
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - object
+    periods:
+    - month
+  - name: Connect
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - object
+    - seat
+    periods:
+    - month
+  - name: Grow
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - object
+    - seat
+    periods:
+    - month
+  - name: Plus
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - object
+    - seat
+    periods:
+    - month
