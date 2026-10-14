@@ -4,10 +4,12 @@ source:
 - https://zapier.com/apps/jobber/integrations
 - https://composio.dev/toolkits/jobber
 checked:
+- geotab/integrations/geotab-integration-edges.yml
 - https://composio.dev/toolkits/jobber
 - https://monid.ai/tools/jobber
 - https://n8n.io/integrations/jobber/
 - https://zapier.com/apps/jobber/integrations
+- paychex-developer/integrations/paychex-developer-integration-edges.yml
 summary: null
 marketplace_apps:
 - marketplace: zapier
@@ -428,6 +430,39 @@ edges:
   direction: third-party
   category: Accounting
   partner_url: http://intuit.com/
+- partner_name: Geotab (own)
+  partner: geotab
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://marketplace.geotab.com/partner/jobber/
+  mirror_of: geotab/integrations/geotab-integration-edges.yml
+  apps:
+  - Jobber
+  listing_count: 1
+  detected: '2026-10-14'
+  detected_by: mirror-platform-listings.py
+- partner_name: Paychex (own)
+  partner: paychex-developer
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://marketplace.paychex.com/apps/775497/jobber
+  mirror_of: paychex-developer/integrations/paychex-developer-integration-edges.yml
+  apps:
+  - Jobber
+  listing_count: 1
+  detected: '2026-10-14'
+  detected_by: mirror-platform-listings.py
+  category: Business Solutions
 templates:
 - title: Create Google Contacts from new clients in Jobber
   url: https://zapier.com/apps/google-contacts/integrations/jobber/416089/create-google-contacts-from-new-clients-in-jobber
