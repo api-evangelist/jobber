@@ -461,7 +461,7 @@
     app_slug: jobber
     beta: false
     builder: unknown (not in the directory record)
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
 - slug: jobber-pipedream
   label: Pipedream
@@ -487,5 +487,5 @@
     actions: true
     sources: false
     builder: Pipedream repo (component)
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
