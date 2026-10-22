@@ -13,6 +13,7 @@ checked:
 - https://zapier.com/api/v4/apps/
 - https://zapier.com/apps/jobber/integrations
 - paychex-developer/integrations/paychex-developer-integration-edges.yml
+- wix/integrations/wix-integration-edges.yml
 summary: null
 marketplace_apps:
 - marketplace: zapier
@@ -103,39 +104,6 @@ marketplace_apps:
   - key: JOBBER_UPDATE_PRODUCT_OR_SERVICE
   - key: JOBBER_UPDATE_QUOTE
 edges:
-- partner_name: Geotab (own)
-  partner: geotab
-  partner_match: mirror
-  mirror_match: domain
-  type: marketplace
-  relationship: platform-app
-  direction: third-party
-  channel: partner-built
-  marketplace: own
-  evidence: https://marketplace.geotab.com/partner/jobber/
-  mirror_of: geotab/integrations/geotab-integration-edges.yml
-  apps:
-  - Jobber
-  listing_count: 1
-  detected: '2026-10-14'
-  detected_by: mirror-platform-listings.py
-- partner_name: Paychex (own)
-  partner: paychex-developer
-  partner_match: mirror
-  mirror_match: domain
-  type: marketplace
-  relationship: platform-app
-  direction: third-party
-  channel: partner-built
-  marketplace: own
-  evidence: https://marketplace.paychex.com/apps/775497/jobber
-  mirror_of: paychex-developer/integrations/paychex-developer-integration-edges.yml
-  apps:
-  - Jobber
-  listing_count: 1
-  detected: '2026-10-14'
-  detected_by: mirror-platform-listings.py
-  category: Business Solutions
 - partner_name: Zapier
   partner: zapier
   partner_match: aggregator
@@ -547,6 +515,58 @@ edges:
   direction: third-party
   category: Accounting
   partner_url: http://intuit.com/
+- partner_name: Geotab (own)
+  partner: geotab
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://marketplace.geotab.com/partner/jobber/
+  mirror_of: geotab/integrations/geotab-integration-edges.yml
+  apps:
+  - Jobber
+  listing_count: 1
+  detected: '2026-10-14'
+  detected_by: mirror-platform-listings.py
+- partner_name: Paychex (own)
+  partner: paychex-developer
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://marketplace.paychex.com/apps/775497/jobber
+  mirror_of: paychex-developer/integrations/paychex-developer-integration-edges.yml
+  apps:
+  - Jobber
+  listing_count: 1
+  detected: '2026-10-14'
+  detected_by: mirror-platform-listings.py
+  category: Business Solutions
+- partner_name: Wix (own)
+  partner: wix
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://www.wix.com/app-market/developer/jobber
+  mirror_of: wix/integrations/wix-integration-edges.yml
+  apps:
+  - Jobber
+  listing_count: 1
+  detected: '2026-10-22'
+  detected_by: mirror-platform-listings.py
+  category: Bookings
+  publisher_verified:
+  - Verified by Wix
 templates:
 - title: Create Google Contacts from new clients in Jobber
   url: https://zapier.com/apps/google-contacts/integrations/jobber/416089/create-google-contacts-from-new-clients-in-jobber

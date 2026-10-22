@@ -168,31 +168,6 @@
   relationship: ipaas-bridge
   status: pending-generation
   arazzo: null
-- slug: jobber-geotab-own
-  label: Geotab (own)
-  partner: geotab
-  partner_name: Geotab (own)
-  type: marketplace
-  marketplace: own
-  channel: partner-built
-  evidence: https://marketplace.geotab.com/partner/jobber/
-  source: edge
-  relationship: platform-app
-  status: not-a-workflow
-  arazzo: null
-- slug: jobber-paychex-own
-  label: Paychex (own)
-  partner: paychex-developer
-  partner_name: Paychex (own)
-  category: Business Solutions
-  type: marketplace
-  marketplace: own
-  channel: partner-built
-  evidence: https://marketplace.paychex.com/apps/775497/jobber
-  source: edge
-  relationship: platform-app
-  status: not-a-workflow
-  arazzo: null
 - slug: jobber-zapier
   label: Zapier
   partner: zapier
@@ -525,4 +500,42 @@
   source: edge
   relationship: ipaas-bridge
   status: pending-partner-spec
+  arazzo: null
+- slug: jobber-geotab-own
+  label: Geotab (own)
+  partner: geotab
+  partner_name: Geotab (own)
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.geotab.com/partner/jobber/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: jobber-paychex-own
+  label: Paychex (own)
+  partner: paychex-developer
+  partner_name: Paychex (own)
+  category: Business Solutions
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.paychex.com/apps/775497/jobber
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: jobber-wix-own
+  label: Wix (own)
+  partner: wix
+  partner_name: Wix (own)
+  category: Bookings
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://www.wix.com/app-market/developer/jobber
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
   arazzo: null
