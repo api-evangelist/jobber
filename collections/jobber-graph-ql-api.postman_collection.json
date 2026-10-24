@@ -1,0 +1,267 @@
+{
+  "info": {
+    "_postman_id": "180fc0b1-e151-4ee2-9206-9ca12a9e7a4a",
+    "name": "Jobber Developer GraphQL API",
+    "description": "The Jobber Developer API is a GraphQL API for accessing and modifying data on Jobber accounts.\nA single HTTPS endpoint accepts POST requests containing GraphQL `query`, `variables`, and\n`operationName` fields. Authentication is OAuth 2.0 bearer access tokens. API versioning is\ndate-based and selected via the `X-JOBBER-GRAPHQL-VERSION` header. Rate limiting uses a\nleaky-bucket query-cost system in addition to a 2,500 requests per 5 minutes DDoS guard.\n\nContact Support:\n Name: Jobber API Support\n Email: api-support@getjobber.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:02:32.000Z",
+    "updatedAt": "2026-10-21T20:02:32.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-180fc0b1-e151-4ee2-9206-9ca12a9e7a4a"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "graphql",
+          "item": [
+            {
+              "name": "Execute A GraphQL Query Or Mutation",
+              "id": "509f96b2-6da2-401c-a9d4-f763e1ada3c5",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{bearerToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "Date-based API version to pin the request to (e.g. `2025-04-16`).",
+                    "key": "X-JOBBER-GRAPHQL-VERSION",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"<string>\",\n  \"variables\": {\n    \"laboris_7aa\": 51333046\n  },\n  \"operationName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/graphql",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "graphql"
+                  ]
+                },
+                "description": "Single GraphQL endpoint for executing queries and mutations against the Jobber Developer API.\nTop-level query objects include Clients, Requests, Quotes, Jobs, Invoices, Visits,\nAssessments, Properties, Products, Services, Expenses, TimeSheetEntries, Users, Accounts,\nand CustomFieldConfigurations. Mutations support create / edit / delete operations on most\nresources, plus archive, activate, and event-style transitions (e.g. invoice approval,\npayment recording)."
+              },
+              "response": [
+                {
+                  "id": "320937f0-8cc0-49c2-9704-f0b7f0b3061a",
+                  "name": "GraphQL response. `data` contains the result; `errors` contains any errors. `extensions.cost` includes throttling cost metadata.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "Date-based API version to pin the request to (e.g. `2025-04-16`).",
+                        "key": "X-JOBBER-GRAPHQL-VERSION",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"query\": \"<string>\",\n  \"variables\": {\n    \"laboris_7aa\": 51333046\n  },\n  \"operationName\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/graphql",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "graphql"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"data\": \"<object,null>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"path\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"extensions\": {\n        \"code\": \"<string>\"\n      }\n    },\n    {\n      \"message\": \"<string>\",\n      \"path\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"extensions\": {\n        \"code\": \"<string>\"\n      }\n    }\n  ],\n  \"extensions\": {\n    \"cost\": {\n      \"requestedQueryCost\": \"<integer>\",\n      \"actualQueryCost\": \"<integer>\",\n      \"throttleStatus\": {\n        \"maximumAvailable\": \"<integer>\",\n        \"currentlyAvailable\": \"<integer>\",\n        \"restoreRate\": \"<integer>\"\n      }\n    }\n  }\n}",
+                  "createdAt": "2026-10-21T20:02:33.000Z",
+                  "updatedAt": "2026-10-21T20:02:33.000Z",
+                  "uid": "35240-320937f0-8cc0-49c2-9704-f0b7f0b3061a"
+                },
+                {
+                  "id": "94f69e3c-e9a6-490d-a5d8-2aef2ea5a10d",
+                  "name": "Unauthorized \u2014 invalid or missing access token.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "Date-based API version to pin the request to (e.g. `2025-04-16`).",
+                        "key": "X-JOBBER-GRAPHQL-VERSION",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"query\": \"<string>\",\n  \"variables\": {\n    \"laboris_7aa\": 51333046\n  },\n  \"operationName\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/graphql",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "graphql"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:02:33.000Z",
+                  "updatedAt": "2026-10-21T20:02:33.000Z",
+                  "uid": "35240-94f69e3c-e9a6-490d-a5d8-2aef2ea5a10d"
+                },
+                {
+                  "id": "9901c283-ebd8-48f9-bbf2-6cee67d008c2",
+                  "name": "Too Many Requests \u2014 DDoS limit (2500 / 5 min) or GraphQL cost throttling.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "Date-based API version to pin the request to (e.g. `2025-04-16`).",
+                        "key": "X-JOBBER-GRAPHQL-VERSION",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"query\": \"<string>\",\n  \"variables\": {\n    \"laboris_7aa\": 51333046\n  },\n  \"operationName\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/graphql",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "graphql"
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:02:33.000Z",
+                  "updatedAt": "2026-10-21T20:02:33.000Z",
+                  "uid": "35240-9901c283-ebd8-48f9-bbf2-6cee67d008c2"
+                }
+              ],
+              "createdAt": "2026-10-21T20:02:33.000Z",
+              "updatedAt": "2026-10-21T20:02:33.000Z",
+              "uid": "35240-509f96b2-6da2-401c-a9d4-f763e1ada3c5"
+            }
+          ],
+          "id": "80d9c423-9763-45c8-b151-c6a64a0bbae3",
+          "createdAt": "2026-10-21T20:02:33.000Z",
+          "updatedAt": "2026-10-21T20:02:33.000Z",
+          "uid": "35240-80d9c423-9763-45c8-b151-c6a64a0bbae3"
+        }
+      ],
+      "id": "0c8735c9-838f-4ba3-9a46-b2dc2712186d",
+      "createdAt": "2026-10-21T20:02:33.000Z",
+      "updatedAt": "2026-10-21T20:02:33.000Z",
+      "uid": "35240-0c8735c9-838f-4ba3-9a46-b2dc2712186d"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.getjobber.com"
+    }
+  ]
+}
